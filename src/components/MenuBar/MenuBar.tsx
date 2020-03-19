@@ -83,7 +83,11 @@ export default function MenuBar() {
     getToken(name, roomName).then(token => connect(token));
   };
 
-  handleSubmit(null);
+  if (!window.location.origin.includes('twil.io')) {
+    window.history.replaceState(null, '', window.encodeURI(`/room/${roomName}`));
+  }
+
+  getToken(name, roomName).then(token => connect(token));
 
   return (
     <AppBar className={classes.container} position="static">
