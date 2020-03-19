@@ -66,14 +66,6 @@ export default function MenuBar() {
     }
   }, [URLRoomName, AccessToken, UserID]);
 
-  const componentDidMount = () => {
-    console.log('Component Did Mount');
-    if (!window.location.origin.includes('twil.io')) {
-      window.history.replaceState(null, '', window.encodeURI(`/room/${roomName}`));
-    }
-    getToken(name, roomName).then(token => connect(token));
-  };
-
   const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
   };
@@ -95,7 +87,7 @@ export default function MenuBar() {
     <AppBar className={classes.container} position="static">
       <Toolbar>
         {roomState === 'disconnected' ? (
-          <form className={classes.form} onSubmit={handleSubmit}>
+          <form className={classes.form} onSubmit={handleSubmit} onLoad={handleSubmit}>
             {!user?.displayName ? (
               <TextField
                 id="menu-name"

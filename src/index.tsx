@@ -45,6 +45,16 @@ const VideoApp = () => {
   );
 };
 
+class OnPageLoad extends React.Component {
+  componentDidMount() {
+    console.log('i am loaded');
+  }
+
+  render() {
+    return '';
+  }
+}
+
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
@@ -66,6 +76,8 @@ ReactDOM.render(
         </Switch>
       </AppStateProvider>
     </Router>
+    <OnPageLoad />
   </MuiThemeProvider>,
-  document.getElementById('root')
+  document.getElementById('root'),
+  () => {}
 );
