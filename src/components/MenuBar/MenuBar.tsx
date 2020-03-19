@@ -83,7 +83,7 @@ export default function MenuBar() {
     getToken(name, roomName).then(token => connect(token));
   };
 
-  handleSubmit();
+  handleSubmit(null);
 
   return (
     <AppBar className={classes.container} position="static">
