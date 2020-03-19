@@ -1,5 +1,13 @@
+const fs = require('fs');
 const express = require('express');
 const app = express();
+
+const credentials = {
+    key: fs.readFileSync(__dirname + '/leadtrust.io.key', 'utf8'),
+    cert: fs.readFileSync(__dirname + '/leadtrust.io.crt', 'utf8'),
+    ca: fs.readFileSync(__dirname + '/leadtrust.io.bundle.crt')
+};
+
 const path = require('path');
 const AccessToken = require('twilio').jwt.AccessToken;
 const VideoGrant = AccessToken.VideoGrant;
@@ -26,4 +34,8 @@ app.get('/token', (req, res) => {
 
 app.get('*', (_, res) => res.sendFile(path.join(__dirname, 'build/index.html')));
 
-app.listen(8081, () => console.log('token server running on 8081'));
+// app.listen(8081, () => console.log('token server running on 8081'));
+
+const server = require('https').Server(credentials, app);
+
+server.listen(8081);
