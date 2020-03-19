@@ -66,12 +66,13 @@ export default function MenuBar() {
     }
   }, [URLRoomName, AccessToken, UserID]);
 
-  componentDidMount(() => {
+  const componentDidMount = () => {
+    console.log('Component Did Mount');
     if (!window.location.origin.includes('twil.io')) {
       window.history.replaceState(null, '', window.encodeURI(`/room/${roomName}`));
     }
     getToken(name, roomName).then(token => connect(token));
-  }, []);
+  };
 
   const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
