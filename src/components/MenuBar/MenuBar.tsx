@@ -5,7 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import TextField from '@material-ui/core/TextField';
-import Hidden from '@material-ui/core/Hidden';
 import ToggleFullscreenButton from '../ToggleFullScreenButton/ToggleFullScreenButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import Menu from './Menu/Menu';
@@ -103,13 +102,14 @@ export default function MenuBar() {
                 {user.displayName}
               </Typography>
             )}
-            <Hidden
+            <TextField
               id="menu-room"
               label="Room"
               className={classes.textField}
               value={roomName}
               onChange={handleRoomNameChange}
               margin="dense"
+              disabled
             />
             <Button
               type="submit"
