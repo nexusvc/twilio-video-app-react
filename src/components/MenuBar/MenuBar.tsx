@@ -74,8 +74,8 @@ export default function MenuBar() {
     setRoomName(event.target.value);
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = (event: any) => {
+    if (event) event.preventDefault();
     // If this app is deployed as a twilio function, don't change the URL beacuse routing isn't supported.
     if (!window.location.origin.includes('twil.io')) {
       window.history.replaceState(null, '', window.encodeURI(`/room/${roomName}`));
@@ -87,7 +87,7 @@ export default function MenuBar() {
     <AppBar className={classes.container} position="static">
       <Toolbar>
         {roomState === 'disconnected' ? (
-          <form className={classes.form} onSubmit={handleSubmit} onLoad={handleSubmit}>
+          <form className={classes.form} onSubmit={handleSubmit}>
             {!user?.displayName ? (
               <TextField
                 id="menu-name"

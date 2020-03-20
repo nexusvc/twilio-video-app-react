@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { useParams } from 'react-router-dom';
 import { CssBaseline } from '@material-ui/core';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 
@@ -18,6 +18,8 @@ import { VideoProvider } from './components/VideoProvider';
 // See: https://media.twiliocdn.com/sdk/js/video/releases/2.0.0/docs/global.html#ConnectOptions
 // for available connection options.
 const connectionOptions: ConnectOptions = {
+  enableDscp: true,
+  audio: false,
   bandwidthProfile: {
     video: {
       mode: 'collaboration',
@@ -36,7 +38,8 @@ const connectionOptions: ConnectOptions = {
 
 const VideoApp = () => {
   const { error, setError } = useAppState();
-
+  const { AccessToken, UserID } = useParams();
+  console.log(AccessToken, UserID);
   return (
     <VideoProvider options={connectionOptions} onError={setError}>
       <ErrorDialog dismissError={() => setError(null)} error={error} />
@@ -45,39 +48,48 @@ const VideoApp = () => {
   );
 };
 
-class OnPageLoad extends React.Component {
+class NexusvcMonitor extends React.Component {
+  constructor(props: any) {
+    super(props);
+
+    this.state = {
+      theme: theme,
+      user: {},
+      session: this,
+    };
+  }
+
   componentDidMount() {
-    console.log('i am loaded');
+    console.log('did mount');
+  }
+
+  componentDidUpdate() {
+    console.log('did update');
   }
 
   render() {
-    return '';
+    return (
+      <MuiThemeProvider theme={theme}>
+        <CssBaseline />
+        <Router>
+          <AppStateProvider>
+            <Switch>
+              <PrivateRoute exact path="/">
+                <VideoApp />
+              </PrivateRoute>
+              <PrivateRoute path="/room/:URLRoomName/:AccessToken/:UserID">
+                <VideoApp />
+              </PrivateRoute>
+              <Route path="/">
+                <LoginPage />
+              </Route>
+              <Redirect to="/" />
+            </Switch>
+          </AppStateProvider>
+        </Router>
+      </MuiThemeProvider>
+    );
   }
 }
 
-ReactDOM.render(
-  <MuiThemeProvider theme={theme}>
-    <CssBaseline />
-    <Router>
-      <AppStateProvider>
-        <Switch>
-          <PrivateRoute exact path="/">
-            <VideoApp />
-          </PrivateRoute>
-
-          <PrivateRoute path="/room/:URLRoomName/:AccessToken/:UserID">
-            <VideoApp />
-          </PrivateRoute>
-
-          <Route path="/login">
-            <LoginPage />
-          </Route>
-          <Redirect to="/" />
-        </Switch>
-      </AppStateProvider>
-    </Router>
-    <OnPageLoad />
-  </MuiThemeProvider>,
-  document.getElementById('root'),
-  () => {}
-);
+ReactDOM.render(<NexusvcMonitor />, document.getElementById('root'));
