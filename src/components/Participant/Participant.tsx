@@ -20,7 +20,7 @@ export default function Participant({
 }: ParticipantProps) {
   return (
     <ParticipantInfo participant={participant} onClick={onClick} isSelected={isSelected}>
-      <ParticipantTracks participant={participant} disableAudio={disableAudio} enableScreenShare={enableScreenShare} />
+      <ParticipantTracks participant={participant} disableAudio="true" enableScreenShare={enableScreenShare} />
     </ParticipantInfo>
   );
 }
