@@ -20,9 +20,7 @@ import { VideoProvider } from './components/VideoProvider';
 const connectionOptions: ConnectOptions = {
   disableAudio: true,
   bandwidthProfile: {
-    audio: false,
     video: {
-      audio: false,
       mode: 'grid',
       renderDimensions: {
         high: { height: 1080, width: 1920 },
