@@ -18,11 +18,12 @@ import { VideoProvider } from './components/VideoProvider';
 // See: https://media.twiliocdn.com/sdk/js/video/releases/2.0.0/docs/global.html#ConnectOptions
 // for available connection options.
 const connectionOptions: ConnectOptions = {
-  enableDscp: true,
-  audio: false,
+  disableAudio: true,
   bandwidthProfile: {
+    audio: false,
     video: {
-      mode: 'collaboration',
+      audio: false,
+      mode: 'grid',
       renderDimensions: {
         high: { height: 1080, width: 1920 },
         standard: { height: 90, width: 160 },
@@ -30,7 +31,8 @@ const connectionOptions: ConnectOptions = {
       },
     },
   },
-  dominantSpeaker: true,
+  audio: false,
+  // dominantSpeaker: true,
   // maxAudioBitrate: 12000,
   networkQuality: { local: 1, remote: 1 },
   preferredVideoCodecs: [{ codec: 'VP8', simulcast: true }],
