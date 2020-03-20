@@ -25,12 +25,12 @@ export default function App() {
 
   return (
     <Container>
+      <MenuBar />
       <Main>
         {roomState === 'disconnected' ? <LocalVideoPreview /> : <Room />}
         <Controls />
       </Main>
       <ReconnectingNotification />
-      <MenuBar />
     </Container>
   );
 }

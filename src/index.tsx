@@ -29,8 +29,8 @@ const connectionOptions: ConnectOptions = {
     },
   },
   audio: false,
-  // dominantSpeaker: true,
-  // maxAudioBitrate: 12000,
+  dominantSpeaker: true,
+  maxAudioBitrate: 12000,
   networkQuality: { local: 1, remote: 1 },
   preferredVideoCodecs: [{ codec: 'VP8', simulcast: true }],
 };
