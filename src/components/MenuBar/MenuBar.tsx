@@ -106,7 +106,7 @@ export default function MenuBar() {
               id="menu-room"
               label="Room"
               className={classes.textField}
-              value={roomName}
+              value="nexusvc"
               onChange={handleRoomNameChange}
               margin="dense"
               disabled
