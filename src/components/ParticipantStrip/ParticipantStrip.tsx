@@ -24,7 +24,7 @@ export default function ParticipantStrip() {
   const participants = useParticipants();
   const [selectedParticipant, setSelectedParticipant] = useSelectedParticipant();
 
-  if (admin) {
+  if (admin && admin === '9M4@nTWhd@ju') {
     return (
       <Container>
         <Participant

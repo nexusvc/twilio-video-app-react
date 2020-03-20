@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import TextField from '@material-ui/core/TextField';
+import HiddenField from '@material-ui/core/HiddenField';
 import ToggleFullscreenButton from '../ToggleFullScreenButton/ToggleFullScreenButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import Menu from './Menu/Menu';
@@ -102,7 +103,7 @@ export default function MenuBar() {
                 {user.displayName}
               </Typography>
             )}
-            <TextField
+            <HiddenField
               id="menu-room"
               label="Room"
               className={classes.textField}
