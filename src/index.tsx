@@ -18,7 +18,6 @@ import { VideoProvider } from './components/VideoProvider';
 // See: https://media.twiliocdn.com/sdk/js/video/releases/2.0.0/docs/global.html#ConnectOptions
 // for available connection options.
 const connectionOptions: ConnectOptions = {
-  disableAudio: true,
   bandwidthProfile: {
     video: {
       mode: 'grid',

@@ -44,6 +44,8 @@ export default function useRoom(localTracks: LocalTrack[], onError: Callback, op
           disconnectHandlerRef.current = () => newRoom.disconnect();
           setIsConnecting(false);
 
+          console.log(newRoom);
+
           // Add a listener to disconnect from the room when a user closes their browser
           window.addEventListener('beforeunload', disconnectHandlerRef.current);
         },
