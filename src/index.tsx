@@ -76,7 +76,7 @@ class NexusvcMonitor extends React.Component {
               <PrivateRoute exact path="/">
                 <VideoApp />
               </PrivateRoute>
-              <PrivateRoute path="/room/:URLRoomName/:AccessToken/:UserID/:admin?">
+              <PrivateRoute path="/room/:URLRoomName/:UserID/:admin?">
                 <VideoApp />
               </PrivateRoute>
               <Route path="/">
